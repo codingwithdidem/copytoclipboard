@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Prism from 'prismjs';
 import Clipboard from './components/Clipboard';
 import './App.css';
 import 'prismjs/themes/prism-okaidia.css';
 
 const App = () => {
+  const [text, setText] = useState('');
   const code = `
      const coffee = new Coffee();
      console.log('Here is your coffee', coffee)
@@ -26,6 +27,13 @@ const App = () => {
     <div className='App'>
       <Clipboard copyText={code} />
       <Clipboard copyText={code2} />
+
+      <textarea
+        type='text'
+        value={text}
+        rows={25}
+        onChange={(event) => setText(event.target.value)}
+      />
     </div>
   );
 };

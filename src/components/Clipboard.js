@@ -1,4 +1,5 @@
 import React from 'react';
+import { MdContentCopy, MdCheck } from 'react-icons/md';
 import { useCopyToClipboard } from '../lib/useCopyToClipboard';
 
 const Clipboard = ({ copyText }) => {
@@ -13,7 +14,7 @@ const Clipboard = ({ copyText }) => {
         <code className='language-javascript'>{copyText}</code>
       </pre>
       <button className='copy' onClick={() => copyToClipboard(copyText)}>
-        {isCopied ? 'Copied' : 'Copy'}
+        {isCopied ? <MdCheck size={18} /> : <MdContentCopy size={18} />}
       </button>
     </div>
   );

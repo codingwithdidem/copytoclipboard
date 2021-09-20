@@ -13,11 +13,17 @@
   position: absolute;
   right: 0;
   top: 0;
-  padding: 4px 8px;
+  padding: 8px;
   background-color: rgb(8, 8, 8);
-  color: white;
+  color: purple;
   outline: none;
-  border: none;
+  border: 1px solid #ccc;
+  background: white;
+  border-radius: 50%;
+}
+
+textarea {
+  width: 800px;
 }
 
 pre[class*='language-'] {
