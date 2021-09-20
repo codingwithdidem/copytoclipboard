@@ -1,48 +1,31 @@
 import React, { useEffect } from 'react';
 import Prism from 'prismjs';
-import 'prismjs/themes/prism-okaidia.css';
+import Clipboard from './components/Clipboard';
 import './App.css';
-import { useCopyToClipboard } from './lib/useCopyToClipboard';
+import 'prismjs/themes/prism-okaidia.css';
 
 const App = () => {
-  const [isCopied, copyToClipboard] = useCopyToClipboard({
-    debug: true,
-    message: 'Press #{x} to copy',
-    interval: 3000,
-  });
-
   const code = `
      const coffee = new Coffee();
      console.log('Here is your coffee', coffee)
   `;
 
   const code2 = `
-  const donut = new Donut();
-  console.log('Here is your donut', donut)
+    // take the input from the user
+    const number = prompt('Enter the number: ');
+    
+    const result = Math.sqrt(number);
+    console.log(\`The square root of \${number} is \${result}\`);
 `;
+
   useEffect(() => {
     Prism.highlightAll();
   }, []);
 
   return (
     <div className='App'>
-      <div className='main'>
-        <pre>
-          <code className='language-javascript'>{code}</code>
-        </pre>
-        <button className='copy' onClick={() => copyToClipboard(code)}>
-          {isCopied ? 'Copied' : 'Copy'}
-        </button>
-      </div>
-
-      <div className='main'>
-        <pre>
-          <code className='language-javascript'>{code}</code>
-        </pre>
-        <button className='copy' onClick={() => copyToClipboard(code2)}>
-          {isCopied ? 'Copied' : 'Copy'}
-        </button>
-      </div>
+      <Clipboard copyText={code} />
+      <Clipboard copyText={code2} />
     </div>
   );
 };
